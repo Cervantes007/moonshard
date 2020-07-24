@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Controllers | Moonshard</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="Nodejs framework to build high-performance app in no time">
+    <link rel="preload" href="/moonshard/assets/css/0.styles.7b947161.css" as="style"><link rel="preload" href="/moonshard/assets/js/app.158cdde6.js" as="script"><link rel="preload" href="/moonshard/assets/js/2.8922708d.js" as="script"><link rel="preload" href="/moonshard/assets/js/11.a766e817.js" as="script"><link rel="prefetch" href="/moonshard/assets/js/10.2df69137.js"><link rel="prefetch" href="/moonshard/assets/js/12.43aa9ec8.js"><link rel="prefetch" href="/moonshard/assets/js/13.89f6654a.js"><link rel="prefetch" href="/moonshard/assets/js/14.a2d78b60.js"><link rel="prefetch" href="/moonshard/assets/js/15.fbe4352b.js"><link rel="prefetch" href="/moonshard/assets/js/3.7843e624.js"><link rel="prefetch" href="/moonshard/assets/js/4.f53b930b.js"><link rel="prefetch" href="/moonshard/assets/js/5.d8af54d8.js"><link rel="prefetch" href="/moonshard/assets/js/6.6845abf2.js"><link rel="prefetch" href="/moonshard/assets/js/7.4152a458.js"><link rel="prefetch" href="/moonshard/assets/js/8.f3d72a4f.js"><link rel="prefetch" href="/moonshard/assets/js/9.1c075a75.js">
+    <link rel="stylesheet" href="/moonshard/assets/css/0.styles.7b947161.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/moonshard/" class="home-link router-link-active"><!----> <span class="site-name">Moonshard</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/moonshard/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/moonshard/guides/get-started.html" class="nav-link">
+  Get Started
+</a></div><div class="nav-item"><a href="/moonshard/guides/controllers.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Controllers
+</a></div><div class="nav-item"><a href="/moonshard/guides/services.html" class="nav-link">
+  Services
+</a></div><div class="nav-item"><a href="https://github.com/cervantes007/moonshard.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/moonshard/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/moonshard/guides/get-started.html" class="nav-link">
+  Get Started
+</a></div><div class="nav-item"><a href="/moonshard/guides/controllers.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Controllers
+</a></div><div class="nav-item"><a href="/moonshard/guides/services.html" class="nav-link">
+  Services
+</a></div><div class="nav-item"><a href="https://github.com/cervantes007/moonshard.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Controllers</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/moonshard/guides/controllers.html#your-first-controller" class="sidebar-link">Your first controller</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/moonshard/guides/controllers.html#write-your-first-route" class="sidebar-link">Write your first route</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="controllers"><a href="#controllers" class="header-anchor">#</a> Controllers</h1> <p>Controllers are responsible for handling incoming requests and returning responses to the client.</p> <p>A controller's purpose is to receive specific requests for the application.
+The routing mechanism controls which controller receives which requests.
+Frequently, each controller has more than one route, and different routes can perform different actions.</p> <p>In order to create a basic controller, we use classes and decorators.
+Decorators associate classes with required metadata and enable Moonshard to create a routing map (tie requests to the corresponding controllers).</p> <p>To define a <code>Controller</code> you need to steps.</p> <ol><li>create a file with a name ending on <code>.controller.ts</code> or <code>.ctrl.ts</code>. e.g. <code>app.controller.ts</code> or <code>app.ctrl.ts</code>,</li> <li>Write a class inside the create file and decorate it with <code>@Controller()</code>.</li></ol> <h2 id="your-first-controller"><a href="#your-first-controller" class="header-anchor">#</a> Your first controller</h2> <p>Your <code>app.controller.ts</code> file must look like this:</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'moonshard'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppController</span> <span class="token punctuation">{</span>
+  <span class="token comment">// define your routes here.</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>moonshard</code> is smart enough to load your controller before start the app.</p> <h2 id="write-your-first-route"><a href="#write-your-first-route" class="header-anchor">#</a> Write your first route</h2> <p>Inside the <code>user-controller.ts</code>, write a method and decorate with a http verb will handle the incoming request:</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">,</span> Get<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'moonshard'</span><span class="token punctuation">;</span>
+
+@<span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">UsersController</span> <span class="token punctuation">{</span>
+  @<span class="token function">Get</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">helloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'hello world'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>With the above code we create our first route, start the server and visit your app default route under http://localhost:3000,
+you should see the message <code>hello world</code> in your browser.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/moonshard/assets/js/app.158cdde6.js" defer></script><script src="/moonshard/assets/js/2.8922708d.js" defer></script><script src="/moonshard/assets/js/11.a766e817.js" defer></script>
+  </body>
+</html>
