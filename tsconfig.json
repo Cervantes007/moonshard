@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "outDir": "./lib/",
+    "declarationDir": "./lib/types/",
+    "sourceMap": true,
+    "declaration": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
