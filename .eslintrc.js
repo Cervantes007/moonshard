@@ -14,5 +14,6 @@ module.exports = {
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
     'no-unused-labels': 2,
     'no-unused-vars': 2,
+    '@typescript-eslint/no-explicit-any': 0,
   },
 }

@@ -7,7 +7,6 @@ describe('Cats Controller Test', () => {
       method: 'GET',
       url: `/cats?limit=${query.limit}`,
     })
-
     expect(response.statusCode).toBe(200)
     expect(response.payload).toBe(`This action returns all cats (limit: ${query.limit} items)`)
   })
@@ -28,7 +27,7 @@ describe('Cats Controller Test', () => {
     const response = await inject({
       method: 'POST',
       url: `/cats`,
-      body: cat,
+      payload: cat,
     })
 
     expect(response.statusCode).toBe(200)

@@ -1,12 +1,12 @@
 # Get Started
 
-Athena's provide an opinionated REST API over [fastify](https://fastify.com) framework,
-created to allow fast development phase and incredible performance.
+Moonshard provide an opinionated API over [fastify](https://fastify.io) framework,
+it was created to allow fast development phase and incredible performance.
 
 To start a server just execute the `start` function:
 
 ```typescript
-import {start} from 'athena';
+import {start} from 'moonshard';
 
 start(3000);
 ```
@@ -14,7 +14,7 @@ start(3000);
 ## Create our first controller
 
 ```typescript
-import {Controller, Get} from 'athena';
+import {Controller, Get} from 'moonshard';
 
 @Controller()
 export class App {

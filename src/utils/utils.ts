@@ -1,11 +1,11 @@
-import { VOLANT_PARAMS, VOLANT_ROUTES } from './constants'
+import { MOONSHARD_PARAMS, MOONSHARD_ROUTES } from './constants'
 import { RequestMethod } from '../enums'
 import { RouteParamtypes } from '../enums/route-paramtypes.enum'
 
 export const buildParamDecorator = (type) => (path?: string) => (target: any, key: string | symbol, index: number) => {
-  const metadata = Reflect.getMetadata(VOLANT_PARAMS, target, key) || []
+  const metadata = Reflect.getMetadata(MOONSHARD_PARAMS, target, key) || []
   metadata.unshift({ index, type, path })
-  Reflect.defineMetadata(VOLANT_PARAMS, metadata, target, key)
+  Reflect.defineMetadata(MOONSHARD_PARAMS, metadata, target, key)
 }
 
 export const buildMethodDecorator = (method: string) => (url = '/') => (
@@ -13,12 +13,12 @@ export const buildMethodDecorator = (method: string) => (url = '/') => (
   key: string,
   descriptor: TypedPropertyDescriptor<any>,
 ) => {
-  const paramsMetadata = Reflect.getMetadata(VOLANT_PARAMS, target, key) || []
+  const paramsMetadata = Reflect.getMetadata(MOONSHARD_PARAMS, target, key) || []
   const handler = descriptor.value
   const route = { url, method, handler, paramsMetadata }
-  const routes = Reflect.getMetadata(VOLANT_ROUTES, target.constructor) || {}
+  const routes = Reflect.getMetadata(MOONSHARD_ROUTES, target.constructor) || {}
   routes[key] = { ...route, ...routes[key] }
-  Reflect.defineMetadata(VOLANT_ROUTES, routes, target.constructor)
+  Reflect.defineMetadata(MOONSHARD_ROUTES, routes, target.constructor)
   return descriptor
 }
 
