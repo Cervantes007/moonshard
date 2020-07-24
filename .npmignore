@@ -103,5 +103,10 @@ dist
 # TernJS port file
 .tern-port
 .idea
-lib
+src
+.vuepress
+vuepress
+api
+__test__
+.github
 docs
