@@ -1,3 +1,4 @@
 export const PARAMTYPES_METADATA = 'design:paramtypes'
-export const VOLANT_PARAMS = 'volant:params'
-export const VOLANT_ROUTES = 'volant:routes'
+export const MOONSHARD_INJECTABLE = 'moonshard:injectable'
+export const MOONSHARD_PARAMS = 'moonshard:params'
+export const MOONSHARD_ROUTES = 'moonshard:routes'
