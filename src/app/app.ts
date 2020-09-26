@@ -5,6 +5,7 @@ import chalk from 'chalk'
 import { FastifyLoggerInstance } from 'fastify/types/logger'
 import http from 'http'
 import { InjectOptions, Response as LightMyRequestResponse } from 'light-my-request'
+import { defaultErrorHandler } from '../error-handling/default-error-handler'
 
 let app
 
@@ -18,9 +19,13 @@ export const createApp = <Server extends http.Server, Logger extends FastifyLogg
   },
 ): FastifyInstance => {
   const _app = fastify(options)
+
+  _app.setErrorHandler(defaultErrorHandler)
+
   if (!app) {
     app = _app
   }
+
   loadControllers(pattern, { ...globOptions, ...{ matchBase: true } })
   return app
 }

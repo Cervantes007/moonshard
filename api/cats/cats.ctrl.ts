@@ -39,27 +39,27 @@ export class CatsController {
 
   @Get('/redirect')
   @Redirect('/')
-  redirect() {
+  redirect(): string {
     return 'redirect'
   }
 
   @Get('/name/:name')
-  findByName(@Request() request: any, @Reply() reply: any) {
-    reply.send(`This action returns cat by name ${request.params.name}`)
+  findByName(@Request() request: any, @Reply() reply: any): Promise<string> {
+    return reply.send(`This action returns cat by name ${request.params.name}`)
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string): string {
     return this.catsService.findOne(id)
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateCatDto: any) {
+  update(@Param('id') id: string, @Body() updateCatDto: any): string {
     return `This action updates a #${id} cat ${updateCatDto}`
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: string): string {
     return `This action removes a #${id} cat`
   }
 }

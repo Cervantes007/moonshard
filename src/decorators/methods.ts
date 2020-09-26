@@ -5,7 +5,7 @@ import { MOONSHARD_ROUTES } from '../utils/constants'
 export const Get = buildMethodDecorator(RequestMethod.GET)
 export const Post = buildMethodDecorator(RequestMethod.POST)
 export const Put = buildMethodDecorator(RequestMethod.PUT)
-export const PATCH = buildMethodDecorator(RequestMethod.PATCH)
+export const Patch = buildMethodDecorator(RequestMethod.PATCH)
 export const Delete = buildMethodDecorator(RequestMethod.DELETE)
 export const Options = buildMethodDecorator(RequestMethod.OPTIONS)
 export const Head = buildMethodDecorator(RequestMethod.HEAD)
@@ -18,6 +18,17 @@ export const HttpCode = (status: number) => (target, key: string | symbol) => {
       routes[key] = {}
     }
     routes[key].status = status
+    Reflect.defineMetadata(MOONSHARD_ROUTES, routes, target.constructor)
+  }
+}
+
+export const Pipe = (...funtions) => (target, key: string | symbol) => {
+  if (funtions) {
+    const routes = Reflect.getMetadata(MOONSHARD_ROUTES, target.constructor) || {}
+    if (!routes[key]) {
+      routes[key] = {}
+    }
+    routes[key].pipe = funtions
     Reflect.defineMetadata(MOONSHARD_ROUTES, routes, target.constructor)
   }
 }

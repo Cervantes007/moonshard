@@ -10,7 +10,6 @@ In order to create a basic controller, we use classes and decorators.
 Decorators associate classes with required metadata and enable Moonshard to create a routing map (tie requests to the corresponding controllers).
 
 
-
 To define a `Controller` you need to steps.
 1. create a file with a name ending on `.controller.ts` or `.ctrl.ts`. e.g. `app.controller.ts` or `app.ctrl.ts`,
 2. Write a class inside the create file and decorate it with `@Controller()`.
