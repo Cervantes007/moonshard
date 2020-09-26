@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Cervantes007/moonshard/compare/v1.1.0...v1.2.0) (2020-09-26)
+
+
+### Features
+
+* **controller:** adding CRUD base, error-handling, pipe decorator ([fb1cfab](https://github.com/Cervantes007/moonshard/commit/fb1cfab9bfa85feaed7fd1c33622f7dae35983aa))
+
 # [1.1.0](https://github.com/Cervantes007/moonshard/compare/v1.0.0...v1.1.0) (2020-07-24)
 
 
