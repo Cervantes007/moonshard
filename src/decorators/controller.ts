@@ -18,10 +18,15 @@ export const Controller = (options: ControllerOptions | string = '/'): any => (t
     for (const route of _routes) {
       const { paramsMetadata, handler, status, ..._route } = route
       const _status = status || getStatusByMethod(route.method)
-      _route.handler = (request, reply) => {
+      if (route.pipe) {
+        _route.preHandler = route.pipe
+      }
+
+      _route.handler = async (request, reply) => {
         const params = injectParams({ paramsMetadata, request, reply: reply.status(_status) })
         return handler.call(instance, ...params)
       }
+
       server.route(_route)
     }
   }, _options)

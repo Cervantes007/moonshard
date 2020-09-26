@@ -5,7 +5,7 @@ export function injectableInstance(instance): void {
   Reflect.defineMetadata(MOONSHARD_INJECTABLE, instance, instance.constructor)
 }
 
-export function getIntance<T>(target: new () => T): T {
+export function getInstance<T>(target: new () => T): T {
   return Reflect.getMetadata(MOONSHARD_INJECTABLE, target)
 }
 

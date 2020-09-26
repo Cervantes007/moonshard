@@ -1,4 +1,4 @@
-import { getIntance, injectableInstance } from '../src/decorators'
+import { getInstance, injectableInstance } from '../src/decorators'
 
 describe('Injectable Test', () => {
   test('Injectable from instance', () => {
@@ -20,7 +20,7 @@ describe('Injectable Test', () => {
       expect(b.a.getName()).toBe(a.getName())
     }
 
-    const aInstance = getIntance(A)
+    const aInstance = getInstance(A)
     expect(aInstance.getName()).toBe(a.getName())
   })
 })

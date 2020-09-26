@@ -1,7 +1,7 @@
 # Get Started
 
 Moonshard provide an opinionated API over [fastify](https://fastify.io) framework,
-it was created to allow fast development phase and incredible performance.
+it was created to allow fast development phase and blazing production performance.
 
 To start a server just execute the `start` function:
 
