@@ -1,8 +1,16 @@
+import { BadRequestError } from './../error-handling/errors/bad-request-error'
 import { MOONSHARD_PARAMS, MOONSHARD_ROUTES } from './constants'
 import { RequestMethod } from '../enums'
 import { RouteParamtypes } from '../enums/route-paramtypes.enum'
+import { transformAndValidateSync } from './class-transformer-validator'
+import { castToNumber } from './cast-to-number'
+import { castToBoolean } from './cast-to-boolean'
 
-export const buildParamDecorator = (type) => (path?: string) => (target: any, key: string | symbol, index: number) => {
+export const buildParamDecorator = (type) => (path?: string) => (
+  target: any,
+  key: string | symbol,
+  index: number,
+) => {
   const metadata = Reflect.getMetadata(MOONSHARD_PARAMS, target, key) || []
   metadata.unshift({ index, type, path })
   Reflect.defineMetadata(MOONSHARD_PARAMS, metadata, target, key)
@@ -22,6 +30,25 @@ export const buildMethodDecorator = (method: string) => (url = '/') => (
   return descriptor
 }
 
+export const buildParamDecoratorWithParamType = (type) => (path?: string) => (
+  target: any,
+  key: string | symbol,
+  index: number,
+) => {
+  const paramTypes = Reflect.getMetadata('design:paramtypes', target, key)
+  const isPrimitiveOrCustom = !['RegExp', 'String', 'Function', 'Object', 'Array', 'Date'].includes(
+    paramTypes[index].name,
+  )
+  const metadata = Reflect.getMetadata(MOONSHARD_PARAMS, target, key) || []
+  metadata.unshift({
+    index,
+    type,
+    path,
+    ...(isPrimitiveOrCustom && { paramType: paramTypes[index] }),
+  })
+  Reflect.defineMetadata(MOONSHARD_PARAMS, metadata, target, key)
+}
+
 export const getStatusByMethod = (method: string) => {
   switch (method) {
     case RequestMethod.POST:
@@ -38,7 +65,7 @@ export const getStatusByMethod = (method: string) => {
 export const injectParams = ({ paramsMetadata, request, reply }) => {
   const params: any[] = []
   for (const param of paramsMetadata) {
-    const { type, path } = param
+    const { type, path, paramType } = param
     switch (param.type) {
       case RouteParamtypes.REPLY:
         params.push(reply)
@@ -49,6 +76,22 @@ export const injectParams = ({ paramsMetadata, request, reply }) => {
       case RouteParamtypes.BODY:
       case RouteParamtypes.QUERY:
       case RouteParamtypes.PARAM:
+        let value = param.path ? request[type][path] : request[type]
+        if (paramType) {
+          if (paramType.name === 'Number') {
+            value = castToNumber(value)
+          } else if (paramType.name === 'Boolean') {
+            value = castToBoolean(value)
+          } else {
+            try {
+              value = transformAndValidateSync(paramType, value)
+            } catch (errors) {
+              throw new BadRequestError(errors)
+            }
+          }
+        }
+        params.push(value)
+        break
       case RouteParamtypes.HEADERS:
         params.push(param.path ? request[type][path] : request[type])
         break
