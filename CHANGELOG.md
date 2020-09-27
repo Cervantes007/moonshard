@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Cervantes007/moonshard/compare/v1.2.0...v1.3.0) (2020-09-27)
+
+
+### Features
+
+* **validations:** add automatic validations ([e431696](https://github.com/Cervantes007/moonshard/commit/e431696460341176692c02702b8885ea8e681847))
+
 # [1.2.0](https://github.com/Cervantes007/moonshard/compare/v1.1.0...v1.2.0) (2020-09-26)
 
 
