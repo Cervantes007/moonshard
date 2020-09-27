@@ -11,6 +11,16 @@ describe('Cats Controller Test', () => {
     expect(response.payload).toBe(`This action returns all cats (limit: ${query.limit} items)`)
   })
 
+  test('Get cats by id', async () => {
+    const id = 1
+    const response = await inject({
+      method: 'GET',
+      url: `/cats/${1}`,
+    })
+    expect(response.statusCode).toBe(200)
+    expect(response.payload).toBe(`This action returns a #${id} cat`)
+  })
+
   test('Get cat by name', async () => {
     const cat = { name: 'figaro' }
     const response = await inject({

@@ -8,7 +8,9 @@ interface ControllerOptions {
   prefix?: string
 }
 
-export const Controller = (options: ControllerOptions | string = '/'): any => (target: any): void => {
+export const Controller = (options: ControllerOptions | string = '/'): any => (
+  target: any,
+): void => {
   const _options = typeof options === 'string' ? { prefix: options } : options
   const routes = Reflect.getMetadata(MOONSHARD_ROUTES, target) || {}
   const Constructor = spellbook(target)
@@ -22,7 +24,7 @@ export const Controller = (options: ControllerOptions | string = '/'): any => (t
         _route.preHandler = route.pipe
       }
 
-      _route.handler = async (request, reply) => {
+      _route.handler = (request, reply) => {
         const params = injectParams({ paramsMetadata, request, reply: reply.status(_status) })
         return handler.call(instance, ...params)
       }

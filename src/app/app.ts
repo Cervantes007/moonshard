@@ -11,7 +11,10 @@ let app
 
 export const getApp = (): FastifyInstance => app
 
-export const createApp = <Server extends http.Server, Logger extends FastifyLoggerInstance = FastifyLoggerInstance>(
+export const createApp = <
+  Server extends http.Server,
+  Logger extends FastifyLoggerInstance = FastifyLoggerInstance
+>(
   options?: FastifyServerOptions<Server, Logger>,
   { pattern, globOptions }: { pattern?: string; globOptions?: GlobOptions } = {
     pattern: 'src/**/*.@(ctrl|controller).ts',
@@ -30,7 +33,10 @@ export const createApp = <Server extends http.Server, Logger extends FastifyLogg
   return app
 }
 
-const loadControllers = (pattern = 'src/**/*.@(ctrl|controller).ts', options: GlobOptions = { matchBase: true }) => {
+const loadControllers = (
+  pattern = 'src/**/*.@(ctrl|controller).ts',
+  options: GlobOptions = { matchBase: true },
+) => {
   process.env.NODE_ENV !== 'test' && console.log(chalk.bold.blue('Loading controllers:'))
   glob.sync(pattern, options).forEach(function (file) {
     process.env.NODE_ENV !== 'test' && console.log(chalk.green(`-> ${file}`))
@@ -42,7 +48,11 @@ export interface IAppOptions {
   logger?: boolean
 }
 
-export const start = async (port = 3000, options: IAppOptions = { logger: true }, globOptions = {}): Promise<void> => {
+export const start = async (
+  port = 3000,
+  options: IAppOptions = { logger: true },
+  globOptions = {},
+): Promise<void> => {
   if (!app) {
     createApp(options, globOptions)
   }
@@ -55,4 +65,5 @@ export const start = async (port = 3000, options: IAppOptions = { logger: true }
 }
 
 export const close = (): Promise<void> => app.close()
-export const inject = (options: InjectOptions | string): Promise<LightMyRequestResponse> => app.inject(options)
+export const inject = (options: InjectOptions | string): Promise<LightMyRequestResponse> =>
+  app.inject(options)

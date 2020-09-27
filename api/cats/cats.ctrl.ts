@@ -1,3 +1,4 @@
+import { CreateCatDto } from './dto/create-cat.dto'
 import {
   Controller,
   Post,
@@ -22,7 +23,7 @@ export class CatsController {
   @Header('Access-Control-Allow-Origin', '*')
   @Post()
   @HttpCode(200)
-  create(@Body() createCatDto: any): string {
+  create(@Body() createCatDto: CreateCatDto): string {
     return `This action adds a new cat ${createCatDto.name}`
   }
 
